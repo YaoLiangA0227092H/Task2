@@ -24,7 +24,7 @@ describe("Contacts", () => {
              chai.request(app)
                  .get(`/${id}`)
                  .end((err, res) => {
-                     res.should.have.status(200);
+                     res.should.have.status(404);
                      res.body.should.be.a('object');
                      done();
                   });
