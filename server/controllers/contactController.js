@@ -9,7 +9,7 @@ exports.index = function (req, res) {
                 message: err,
             });
         } else {
-            res.json({
+            res.status(200).json({
                 status: "success",
                 message: "Contacts retrieved successfully",
                 data: contacts
@@ -29,7 +29,7 @@ exports.new = function (req, res) {
         if (err) {
             res.status(400).json(err);
         } else {
-            res.json({
+            res.status(200).json({
                 message: 'New contact created!',
                 data: contact
             });
