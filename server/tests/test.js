@@ -24,7 +24,7 @@ describe("Contacts", () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
-                    const id = res.body.data._id
+                    id = res.body.data._id
                     done();
                 });
         });
