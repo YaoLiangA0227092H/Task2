@@ -7,43 +7,7 @@ var app = require('../index')
 chai.use(chaiHttp);
 chai.should();
 describe("Contacts", () => {
-    const id = '641d527d020da8934b8bb256';
-    describe("GET /api/contacts", () => {
-        // Test to get all contacts record
-        it("should get all contacts record", (done) => {
-            chai.request(app)
-                .get('/api/contacts')
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    done();
-                });
-        });
-
-        // Test to get single contact record
-        it("should get a single contact record", (done) => {
-            const id = '641d527d020da8934b8bb256';
-            chai.request(app)
-                .get(`/api/contacts/${id}`)
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    done();
-                });
-        });
-
-        // Test to get single contact record
-        it("should not get a single contact record", (done) => {
-            const id = '641878284fb93242b5ddfaf7';
-            chai.request(app)
-                .get(`/api/contacts/${id}`)
-                .end((err, res) => {
-                    res.should.have.status(404);
-                    done();
-                });
-        });
-    });
-
+    var id = '64213bc9eee74cf21878f882';
     describe("POST /api/contacts", () => {
         // Test to add contact successfully 
         it("should add new contact record", (done) => {
@@ -60,6 +24,7 @@ describe("Contacts", () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
+                    id = res.body.data._id
                     done();
                 });
         });
@@ -99,7 +64,7 @@ describe("Contacts", () => {
         });
 
         // Test to add contact with phone missing
-        it("should return error", (done) => {
+        it("should not return error", (done) => {
             const value = {
                 name: "Test Pass",
                 email: "pass@gmail.com",
@@ -114,6 +79,41 @@ describe("Contacts", () => {
                 });
         });
     });
+    describe("GET /api/contacts", () => {
+        // Test to get all contacts record
+        it("should get all contacts record", (done) => {
+            chai.request(app)
+                .get('/api/contacts')
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    done();
+                });
+        });
+
+        // Test to get single contact record
+        it("should get a single contact record", (done) => {
+            chai.request(app)
+                .get(`/api/contacts/${id}`)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    done();
+                });
+        });
+
+        // Test to get single contact record
+        it("should not get a single contact record", (done) => {
+            chai.request(app)
+                .get(`/api/contacts/64213bc9eee74cf21878f882`)
+                .end((err, res) => {
+                    res.should.have.status(404);
+                    done();
+                });
+        });
+    });
+
+
 
     describe("PUT /api/contacts/:contact_id", () => {
         // Test to update contact email
