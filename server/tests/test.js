@@ -10,14 +10,14 @@ describe("Contacts", () => {
     // var id = '64213bc9eee74cf21878f882';
     describe("POST /api/contacts", () => {
         // Test to add contact successfully 
-        it("should add new contact record", (done) => {
+        it("should add new contact record", async (done) => {
             const value = {
                 name: "Test Pass",
                 email: "pass@gmail.com",
                 phone: "81234567",
                 gender: "Female"
             }
-            async () => await chai.request(app)
+            chai.request(app)
                 .post('/api/contacts')
                 .set('content-type', 'application/x-www-form-urlencoded')
                 .send(value)
