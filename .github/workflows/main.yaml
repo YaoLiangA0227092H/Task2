@@ -22,10 +22,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Start MongoDB v${{ matrix.mongodb-version }}
-        uses: supercharge/mongodb-github-action@1.2.0
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@v1.4.0
         with:
-          mongodb-version: ${{ matrix.mongodb-version }}
+          mongodb_version: 4.4
+          mongo_port: 27017
       - run: npm install
       - run: npm run build --if-present
       - run: npm run test 
