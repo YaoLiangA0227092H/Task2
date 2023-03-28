@@ -26,7 +26,7 @@ describe("Contacts", () => {
                     res.body.should.be.a('object');
                     id = res.body.data._id
                     done();
-                }).catch(done);
+                });
         });
 
         // Test to add contact with name missing
