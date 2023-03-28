@@ -7,7 +7,7 @@ var app = require('../index')
 chai.use(chaiHttp);
 chai.should();
 describe("Contacts", () => {
-    var id = '64213bc9eee74cf21878f882';
+    // var id = '64213bc9eee74cf21878f882';
     describe("POST /api/contacts", () => {
         // Test to add contact successfully 
         it("should add new contact record", (done) => {
@@ -24,7 +24,7 @@ describe("Contacts", () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
-                    id = res.body.data._id
+                    const id = res.body.data._id
                     done();
                 });
         });
