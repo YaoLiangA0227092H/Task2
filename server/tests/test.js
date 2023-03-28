@@ -17,7 +17,7 @@ describe("Contacts", () => {
                 phone: "81234567",
                 gender: "Female"
             }
-            chai.request(app)
+            async () => await chai.request(app)
                 .post('/api/contacts')
                 .set('content-type', 'application/x-www-form-urlencoded')
                 .send(value)
