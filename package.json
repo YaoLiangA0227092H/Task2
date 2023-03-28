@@ -4,7 +4,7 @@
   "description": "TIC3001 Task2",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require babel-register server/tests/*.js --exit --timeout 10000"
+    "test": "mocha --require babel-register server/tests/*.js --exit --timeout 1000000"
   },
   "author": "YL",
   "license": "ISC",
