@@ -17,9 +17,8 @@ const verifyToken = async (req, res, next) => {
     if (existingUser.type < 1) {
         return res.status(403).send("You don't have authorization to access");
     }
-    console.log(user)
-    console.log(existingUser)
   } catch (err) {
+    console.log(err)
     return res.status(401).send("Invalid Token");
   }
   return next();
